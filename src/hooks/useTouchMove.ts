@@ -31,7 +31,7 @@ export default function useTouchMove(
   function onTouchMove(e: TouchEvent) {
     if (!touchPosition) return;
 
-    e.preventDefault();
+    // e.preventDefault();
     const { screenX, screenY } = e.touches[0];
     setTouchPosition({ x: screenX, y: screenY });
     const offsetX = screenX - touchPosition.x;
@@ -123,7 +123,7 @@ export default function useTouchMove(
       touchEventsRef.current.onWheel(e);
     }
 
-    document.addEventListener('touchmove', onProxyTouchMove, { passive: false });
+    document.addEventListener('touchmove', onProxyTouchMove, { passive: true });
     document.addEventListener('touchend', onProxyTouchEnd, { passive: false });
 
     // No need to clean up since element removed
